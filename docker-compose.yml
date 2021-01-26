@@ -1,0 +1,10 @@
+# https://github.com/bitnami/bitnami-docker-codeigniter
+version: '2'
+services:
+  myapp:
+    build: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - '.:/app'
+
