@@ -34,7 +34,7 @@ header.masthead .overlay {
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0.3;
+  opacity: 0.65;
 }
 
 header.masthead h1 {
@@ -123,4 +123,38 @@ header.masthead h1 {
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.category-icon-link img {
+  background-color: tomato;
+}
+
+.mapping-pin {
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: tomato;
+    border-color: tomato;
+}
+
+.btn-primary:hover {
+    background-color:rgb(247, 84, 55);
+    border-color: rgb(247, 84, 55);
+}
+
+a {
+    color: tomato;
+}
+a:hover {
+    color: rgb(247, 84, 55);
+}
+
+.navbar-brand {
+    font-family: 'Indie Flower', cursive;
+    font-size: 3rem;
+}
+
+.navbar-brand .prefix-brand {
+    font-family: 'Bodoni Moda', serif;
 }

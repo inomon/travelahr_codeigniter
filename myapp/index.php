@@ -1,18 +1,10 @@
 <?php
 
-// phpinfo();exit;
-// ini_set('display_errors', true);
 // Including composer autoload
 include_once '../vendor/autoload.php';
 
-// die('p');
-// die(__DIR__ . '/..');
 // Reading .env from root
-// $repository = Dotenv\Repository\RepositoryBuilder::createWithDefaultAdapters()
-//     ->make();
-// $dotenv = Dotenv\Dotenv::create($repository, __DIR__ . '/..');
 $dotenv = Dotenv\Dotenv::createMutable(__DIR__ . '/../');
-// die('x');
 $dotenv->load();
 
 // Borrowed from Laravel for handling boolean, empty and null values

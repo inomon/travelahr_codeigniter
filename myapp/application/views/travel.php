@@ -1,111 +1,64 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-<?php $this->load->view('base/header') ?>
+/**
+ * The travel template is called by the location/travel controller
+ * Here we display the Weather Forecast of the location, and possible venues of interest we can find close by
+ */
+?>
 
-  <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-screen-desktop m-auto text-primary"></i>
+<?php $this->load->view('base/header', ['selectedCity' => $selectedCity]) ?>
+
+    <!-- Masthead -->
+    <header class="masthead text-white text-center" style="background-image: url('<?php echo $mastheadImageLink ?>');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5"><?php echo $selectedCity ?>, <?php echo $selectedCountry ?></h1>
+                    <p class="h3">Here is the weather for <?php echo $selectedCity ?> and some suggestions for places you can explore and enjoy!</p>
+                </div>
             </div>
-            <h3>Fully Responsive</h3>
-            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
-          </div>
         </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-layers m-auto text-primary"></i>
+    </header>
+
+
+    <!-- Weather Grid -->
+    <section class="features-icons bg-light text-center">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <span class="h1">Weather Forecast</span>
+                </div>
             </div>
-            <h3>Bootstrap 4 Ready</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-check m-auto text-primary"></i>
+            <div class="row">
+            <?php foreach ($weather as $forecast): ?>
+                <div class="col-lg-2">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="">
+                            <img class="img-fluid" alt="<?php echo $forecast['weather'][0]['main'] ?>" src="<?php echo $forecast['weather'][0]['icon_link'] ?>" />
+                        </div>
+                        <h3><?php echo date('m/d gA', strtotime($forecast['dt_txt'])) ?></h3>
+                        <p class="lead mb-0"><?php echo $forecast['weather'][0]['description'] ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
             </div>
-            <h3>Easy to Use</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="content-custom">
-	<div>
-		<h1>Welcome to CodeIgniter!</h1>
-
-		<div id="body">
-			<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-			<p>If you would like to edit this page you'll find it located at:</p>
-			<code>application/views/welcome_message.php</code>
-
-			<p>The corresponding controller for this page is found at:</p>
-			<code>application/controllers/Welcome.php</code>
-
-			<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-		</div>
-
-		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-	</div>
-  </section>
-
-  <!-- Image Showcases -->
-  <section class="showcase">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters">
-
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('/assets/theme/landing-page/img/bg-showcase-1.jpg');"></div>
-        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Fully Responsive Design</h2>
-          <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
-        </div>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6 text-white showcase-img" style="background-image: url('/assets/theme/landing-page/img/bg-showcase-2.jpg');"></div>
-        <div class="col-lg-6 my-auto showcase-text">
-          <h2>Updated For Bootstrap 4</h2>
-          <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 4 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 4!</p>
-        </div>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('/assets/theme/landing-page/img/bg-showcase-3.jpg');"></div>
-        <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Easy to Use &amp; Customize</h2>
-          <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <!-- <section class="call-to-action text-white text-center">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-9 mx-auto">
-          <h2 class="mb-4">Ready to get started? Sign up now!</h2>
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-              </div>
+    <!-- Venue Showcase -->
+    <section class="showcase">
+        <div class="container-fluid p-0">
+            <div class="row mb-5 text-center">
+                <div class="col-lg-12">
+                    <span class="h1">Places</span>
+                </div>
             </div>
-          </form>
+            <?php foreach ($venues as $index => $venue): ?>
+                <?php $this->load->view('base/location', ['index' => $index, 'venue' => $venue]) ?>
+            <?php endforeach; ?>
         </div>
-      </div>
-    </div>
-  </section> -->
+    </section>
 
 <?php $this->load->view('base/footer') ?>

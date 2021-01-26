@@ -1,3 +1,6 @@
 /vendor/
 /_misc/
 /.env
+/myapp/application/logs/*.php
+/myapp/application/cache/*
+!/myapp/application/cache/index.html
