@@ -138,9 +138,11 @@ footer.footer {
     border-color: tomato;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus,
+.btn-primary:not(:disabled):not(:disabled):active {
     background-color:rgb(247, 84, 55);
     border-color: rgb(247, 84, 55);
+    box-shadow: 0 0 0 0.2rem rgb(247 84 55 / 50%);
 }
 
 a {

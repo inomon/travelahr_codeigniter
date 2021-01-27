@@ -62,3 +62,12 @@ Created project using CodeIgniter version `3.1.11`, with MVC framework in mind.
 Libraries are created to handle each API fetching procedure.
 To alleviate strain on API fetch overload - hence using the free tier - a caching also was implemented to make sure that each new API fetch can be preserved for an ample time.
 To be used in the future if needed (TTL = 120 seconds).
+
+## Design & Development
+I chose the look and feel of the template, based on a existing free bootstrap template, that emcompasses the simple yet straightforward mission of the app. And its ready to implement responsive layout is a welcome feature.
+
+The only form, has the required list of locations for now, but its build is open for the possibility of creating a searchable field on universal locations (not limited to Japan). It is also located at different key points of the app for accessibility: landing page header, landing page footer, venue listing page top bar.
+
+On the weather forecast section, I retained the weather icons provided by OpenWeather. Since those are already very descriptive, I've included only the weather description and the timestamp. This shows in a glance a timeline of the weather.
+
+I used simple classes that call the endpoints for each service that we need which gets digested into a simple array. This simple array is then fed to the view templates with the sole purpose of displaying content. All other transactions for building the data is only left on libraries. While the controller is just dispatching the needed library to use and feeding the returned data into our template. This is a starting point for an example of making sure that we follow the most basic principle of MVC.

@@ -33,7 +33,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <?php foreach ($venues as $index => $venue): ?>
-                <?php $this->load->view('base/location', ['index' => $index, 'venue' => $venue]) ?>
+                <?php if ($index != 'masthead_image_link'): ?>
+                    <?php $this->load->view('base/location', ['index' => $index, 'venue' => $venue]) ?>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </section>
